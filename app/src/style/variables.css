@@ -1,7 +1,12 @@
 :root {
 	--background: white;
-	--foreground: black;
-	
-	--font-family: "Arial";
+	--foreground: #FF5C52;
+
+	--first-font-family: anisette-std, sans-serif;
+	--second-font-family: roboto, sans-serif;
+	--font-style-weight: bold;
 	--font-size: 20px;
+
+	--font-color-red: #FF5C52;
+	--font-color-grey: #333333;
 }
