@@ -4,9 +4,12 @@
 
 	--first-font-family: anisette-std, sans-serif;
 	--second-font-family: roboto, sans-serif;
-	--font-style-weight: bold;
-	--font-size: 20px;
+	--font-size-attention: 20px;
+	--font-size-information: 18px;
 
 	--font-color-red: #FF5C52;
 	--font-color-grey: #333333;
+	--font-light: 300;
+
+	--font-size-footer: 15px;
 }

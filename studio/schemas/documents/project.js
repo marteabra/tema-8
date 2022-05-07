@@ -5,6 +5,14 @@ export default {
 
     fields: [
         {
+            title: 'Slug',
+            name: 'slug',
+            type: 'slug',
+            options: {
+                source: 'projectName'
+            }
+        },
+        {
             title: 'Frontpage Image',
             name: 'frontpageImage',
             type: 'image'

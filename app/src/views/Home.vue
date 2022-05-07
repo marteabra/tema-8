@@ -28,19 +28,30 @@
         </div>
       </section>
     </section>
-    <section class="frontpage__projects">
-      <div class="project__image"></div>
-      <button class="project__button">PROJECT NAME</button>
+    <section class="frontpage__projects" v-for="project in result">
+      <div class="project__image"><img :src="project.frontpageImage" /></div>
+      <button class="project__button">{{ project.projectName }}</button>
     </section>
   </div>
+  <Footer />
 </template>
 
 <script>
 import Headerfront from "../components/Headerfront.vue";
+import Footer from "../components/Footer.vue";
+import sanityMixin from "../mixins/sanityMixin.js";
+import query from "../groq/frontpage.groq?raw";
 
 export default {
+  mixins: [sanityMixin],
+
+  async created() {
+    await this.sanityFetch(query);
+  },
+
   components: {
     Headerfront,
+    Footer,
   },
 
   data() {
@@ -55,7 +66,7 @@ export default {
 .frontpage__landing {
   background: #ff5c52;
   color: white;
-  height: 85vh;
+  height: 90vh;
   font-family: var(--first-font-family);
   text-align: center;
 }
@@ -77,7 +88,7 @@ export default {
 }
 .frontpage__landing-text--middle {
   align-self: center;
-  font-size: 150px;
+  font-size: 130px;
 }
 .frontpage__landing-text--right {
   align-self: flex-end;
@@ -86,12 +97,16 @@ export default {
 .frontpage__projects {
   padding: 10px;
   display: flex;
+  height: 480px;
+}
+
+.frontpage__projects:nth-child(2n + 3) {
+  flex-flow: row-reverse;
 }
 
 .project__image {
-  background: grey;
-  height: 437px;
-  width: 736px;
+  height: 430px;
+  width: 730px;
 }
 
 .project__button {

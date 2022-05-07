@@ -2,7 +2,7 @@
   <main class="header">
     <a href="/">
       <img
-        src="public/images/logo-portfolio-inverted.svg"
+        src="public/images/logo-portfolio.svg"
         alt="logo-inverted"
         class="header__logo"
       />
@@ -31,7 +31,7 @@ export default {
 <style scoped>
 .header {
   display: flex;
-  background: var(--foreground);
+  background: var(--background);
   position: relative;
   height: 10vh;
   padding: 5 0 0 0;
@@ -39,13 +39,13 @@ export default {
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--foreground);
   font-family: var(--first-font-family);
   font-size: 15px;
 }
 
 a:hover {
-  color: rgba(255, 255, 255, 0.643);
+  color: #ff5b52aa;
 }
 
 .header__logo {
