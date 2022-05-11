@@ -3,35 +3,64 @@
 
   <div class="frontpage">
     <section class="frontpage__landing">
-      <section class="frontpage__landing-text">
-        <div class="frontpage__landing-text--left">HELLO AND WELCOME TO MY</div>
-        <div class="frontpage__landing-text--middle">PORTFOLIO</div>
-        <div class="frontpage__landing-text--right">
-          GRAPHIC DESIGN & FRONTEND
-        </div>
+      <section class="frontpage__landing-image">
+        <img
+          src="public/images/logo-portfolio-inverted.svg"
+          alt=""
+          class="frontpage-logo"
+        />
       </section>
-
-      <section class="frontpage__landing--arrow">
-        <div>
-          <svg
-            width="46"
-            height="79"
-            viewBox="0 0 46 79"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M20.8787 78.1213C22.0503 79.2929 23.9497 79.2929 25.1213 78.1213L44.2132 59.0294C45.3848 57.8579 45.3848 55.9584 44.2132 54.7868C43.0416 53.6152 41.1421 53.6152 39.9706 54.7868L23 71.7574L6.02944 54.7868C4.85786 53.6152 2.95837 53.6152 1.7868 54.7868C0.615224 55.9584 0.615224 57.8579 1.7868 59.0294L20.8787 78.1213ZM20 0L20 76H26L26 0L20 0Z"
-              fill="white"
-            />
-          </svg>
-        </div>
-      </section>
+      <svg
+        width="46"
+        height="50"
+        viewBox="0 0 46 50"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="frontpage__landing-arrow"
+      >
+        <path
+          d="M26 3C26 1.34315 24.6569 0 23 0C21.3431 0 20 1.34315 20 3L26 3ZM20.8787 49.1213C22.0503 50.2929 23.9497 50.2929 25.1213 49.1213L44.2132 30.0294C45.3848 28.8579 45.3848 26.9584 44.2132 25.7868C43.0416 24.6152 41.1421 24.6152 39.9706 25.7868L23 42.7574L6.02944 25.7868C4.85786 24.6152 2.95837 24.6152 1.7868 25.7868C0.615224 26.9584 0.615224 28.8579 1.7868 30.0294L20.8787 49.1213ZM20 3L20 47H26L26 3L20 3Z"
+          fill="white"
+        />
+      </svg>
     </section>
-    <section class="frontpage__projects" v-for="project in result">
+
+    <section class="frontpage__projects" v-for="project in projects">
       <div class="project__image"><img :src="project.frontpageImage" /></div>
       <button class="project__button">{{ project.projectName }}</button>
     </section>
+
+    <div v-if="loading">.......</div>
+    <div v-else>
+      <section class="about" v-for="about in about">
+        <h1 class="about__heading">{{ about.heading }}</h1>
+        <main class="about__content">
+          <section class="about__content-left">
+            <div class="content__left-portrait">
+              <img :src="about.portrait" />
+            </div>
+            <div class="content__left-software">{{ about.software }}</div>
+          </section>
+
+          <section class="about__content-right">
+            <div class="about__content-info">{{ about.info }}</div>
+            <div class="about__content-contactInfo">
+              {{ about.contactInfo }}
+            </div>
+            <div class="about__content-values">{{ about.values }}</div>
+          </section>
+        </main>
+
+        <section class="about__socials">
+          <button
+            class="about__socials-button"
+            v-for="socials in about.socials"
+          >
+            <img :src="socials" />
+          </button>
+        </section>
+      </section>
+    </div>
   </div>
   <Footer />
 </template>
@@ -40,13 +69,16 @@
 import Headerfront from "../components/Headerfront.vue";
 import Footer from "../components/Footer.vue";
 import sanityMixin from "../mixins/sanityMixin.js";
-import query from "../groq/frontpage.groq?raw";
+import queryProjects from "../groq/frontpageProjects.groq?raw";
+import queryAbout from "../groq/frontpageAbout.groq?raw";
+import sanity from "../sanity.js";
 
 export default {
   mixins: [sanityMixin],
 
   async created() {
-    await this.sanityFetch(query);
+    await this.sanityFetchProjects(queryProjects);
+    await this.sanityFetchAbout(queryAbout);
   },
 
   components: {
@@ -57,7 +89,21 @@ export default {
   data() {
     return {
       appName: import.meta.env.VITE_APP_NAME,
+      projects: [],
+      about: [],
     };
+  },
+  methods: {
+    async sanityFetchProjects(query, params) {
+      this.projects = await sanity.fetch(query, params);
+      console.log(this.projects);
+      this.loading = false;
+    },
+    async sanityFetchAbout(query, params) {
+      this.about = await sanity.fetch(query, params);
+      console.log(this.about);
+      this.loading = false;
+    },
   },
 };
 </script>
@@ -67,57 +113,115 @@ export default {
   background: #ff5c52;
   color: white;
   height: 90vh;
+  width: 100vw;
   font-family: var(--first-font-family);
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.frontpage__landing-text {
-  height: 70vh;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  padding: 0 100 0 100;
-}
-
-.frontpage__landing-text div {
-  margin: 10 0 10 0;
-}
-
-.frontpage__landing-text--left {
-  align-self: flex-start;
-}
-.frontpage__landing-text--middle {
-  align-self: center;
-  font-size: 130px;
-}
-.frontpage__landing-text--right {
-  align-self: flex-end;
+.frontpage-logo {
+  height: 50vh;
+  margin: 80 0 80 0;
 }
 
 .frontpage__projects {
-  padding: 10px;
   display: flex;
+  padding: 10px;
   height: 480px;
+  margin: 0 50 0 50;
 }
 
 .frontpage__projects:nth-child(2n + 3) {
   flex-flow: row-reverse;
 }
 
-.project__image {
+.project__image img {
   height: 430px;
   width: 730px;
 }
 
 .project__button {
-  background: var(--foreground);
-  border-radius: 40px;
   align-self: center;
+  border-radius: 40px;
+  box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.2);
   height: 50px;
   width: 300px;
   margin-left: -40px;
+  background: var(--foreground);
   font-family: var(--second-font-family);
   color: white;
+}
+
+.project__button:hover {
+  background: #ff5b52a0;
+  transition: 1s;
+  box-shadow: 0px 0px white;
+}
+
+.frontpage__projects:nth-child(2n + 3) .project__button {
+  margin-right: -40px;
+}
+
+.frontpage__landing-arrow {
+  transform: translateY(-20px);
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  margin-top: 30px;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+.about {
+  margin: 0 50 0 50;
+}
+
+.about__heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about__content {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.about__content-right {
+  margin: 0 80 0 80;
+  display: grid;
+  row-gap: 30px;
+}
+
+.content__left-portrait {
+  height: 200px;
+  width: 200px;
+}
+
+.content__left-software {
+}
+
+.about__socials {
+  display: flex;
+  justify-content: center;
+  width: 90vw;
+  margin: 50px 0 0 0;
+}
+
+.about__socials-button {
+  height: 50px;
+  width: 50px;
+  margin: 15px;
 }
 </style>
 

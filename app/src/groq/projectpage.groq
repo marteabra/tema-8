@@ -1,4 +1,9 @@
-*[slug.current == $projectSlug][0] {
- ...
+*[slug.current == $projectSlug][0]
+{ _id, 
+projectName, 
+"headingImage":headingImage.asset->.url, 
+brief, 
+client, 
+idea, 
+"images":images[].asset->.url, 
 }
-

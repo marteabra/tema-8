@@ -2,7 +2,7 @@
   <main class="header">
     <a href="/">
       <img
-        src="public/images/logo-portfolio.svg"
+        src="public/images/logo-only-name.svg"
         alt="logo-inverted"
         class="header__logo"
       />
@@ -49,7 +49,8 @@ a:hover {
 }
 
 .header__logo {
-  height: 60px;
+  height: 25px;
+  margin: 10 0 10 0;
 }
 
 .header__list {

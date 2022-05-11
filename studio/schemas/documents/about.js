@@ -15,13 +15,27 @@ export default {
             type: 'image'
         },
         {
+            title: 'Software',
+            name: 'software',
+            type: 'array',
+            of: [{ type: 'string' }],
+            options: {
+                layout: 'tags'
+            }
+        },
+        {
             title: 'Information',
             name: 'info',
             type: 'text'
         },
         {
             title: 'Contact information',
-            name: 'contactinfo',
+            name: 'contactInfo',
+            type: 'text'
+        },
+        {
+            title: 'Values',
+            name: 'values',
             type: 'text'
         },
         {

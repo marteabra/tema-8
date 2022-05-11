@@ -1,6 +1,15 @@
-*[_type == "project"] {
+//old frontpage, fetching about and project in same groq
+
+*[_type in ["about", "project"]]
+{
   _id, 
   projectName, 
   "frontpageImage": frontpageImage.asset->.url,
+  heading,
+  "portrait": portrait.asset->.url,
+  software,
+  info,
+  contactInfo,
+  values,
+  "socials": socials[].asset->.url
 }
-

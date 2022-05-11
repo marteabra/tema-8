@@ -1,0 +1,6 @@
+*[_type == 'project']
+{
+  _id, 
+  projectName, 
+  "frontpageImage": frontpageImage.asset->.url,
+}

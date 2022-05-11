@@ -35,7 +35,7 @@ export default {
   display: flex;
   justify-content: center;
   font-size: var(--font-size-footer);
-  margin: 80px 0 30px 0;
+  margin: 100px 0 50px 0;
 }
 
 .footer__container {
