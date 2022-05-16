@@ -11,13 +11,13 @@
       </section>
       <section class="footer__social-links">
         <a href="#">
-          <img src="public/images/facebook-icon.png" alt="" />
+          <img src="public/images/facebook-icon-red.png" alt="" />
         </a>
         <a href="#">
-          <img src="public/images/instagram-icon.png" alt="" />
+          <img src="public/images/ig-icon-red.png" alt="" />
         </a>
         <a href="#">
-          <img src="public/images/linkedin-icon.png" alt="" />
+          <img src="public/images/linkedin-icon-red.png" alt="" />
         </a>
       </section>
     </section>

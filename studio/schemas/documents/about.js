@@ -36,7 +36,7 @@ export default {
         {
             title: 'Values',
             name: 'values',
-            type: 'text'
+            type: 'blockContent'
         },
         {
             title: 'Social media',

@@ -39,15 +39,23 @@
             <div class="content__left-portrait">
               <img :src="about.portrait" />
             </div>
-            <div class="content__left-software">{{ about.software }}</div>
+            <ul class="content__left-software" v-for="tech in about.software">
+              <li>
+                {{ tech }}
+              </li>
+            </ul>
           </section>
 
           <section class="about__content-right">
             <div class="about__content-info">{{ about.info }}</div>
-            <div class="about__content-contactInfo">
+            <div class="about__content-contact">
               {{ about.contactInfo }}
             </div>
-            <div class="about__content-values">{{ about.values }}</div>
+            <div class="about__content-values">
+              <div v-for="text in about.values[0].children">
+                {{ text.text }}
+              </div>
+            </div>
           </section>
         </main>
 
@@ -72,6 +80,7 @@ import sanityMixin from "../mixins/sanityMixin.js";
 import queryProjects from "../groq/frontpageProjects.groq?raw";
 import queryAbout from "../groq/frontpageAbout.groq?raw";
 import sanity from "../sanity.js";
+import { SanityBlocks } from "sanity-blocks-vue-component";
 
 export default {
   mixins: [sanityMixin],
@@ -84,6 +93,7 @@ export default {
   components: {
     Headerfront,
     Footer,
+    SanityBlocks,
   },
 
   data() {
@@ -93,6 +103,7 @@ export default {
       about: [],
     };
   },
+
   methods: {
     async sanityFetchProjects(query, params) {
       this.projects = await sanity.fetch(query, params);
@@ -184,7 +195,8 @@ export default {
 }
 
 .about {
-  margin: 0 50 0 50;
+  width: 100vw;
+  margin: 100 0 0 0;
 }
 
 .about__heading {
@@ -195,28 +207,41 @@ export default {
 .about__content {
   display: grid;
   grid-template-columns: 2fr 3fr;
+  margin: 0 100 0 100;
 }
 
+/* Content right side of about section */
 .about__content-right {
   margin: 0 80 0 80;
-  display: grid;
-  row-gap: 30px;
 }
 
+.about__content-info {
+  margin-bottom: 20px;
+}
+
+.about__content-contact {
+  margin-bottom: 20px;
+}
+
+/* Content left side of about section */
 .content__left-portrait {
-  height: 200px;
-  width: 200px;
+  width: 300px;
+  margin-bottom: 20px;
 }
 
 .content__left-software {
+  padding-left: 90px;
+  margin-top: 5px;
 }
 
 .about__socials {
   display: flex;
   justify-content: center;
-  width: 90vw;
+  width: 100vw;
   margin: 50px 0 0 0;
 }
+
+/* Content bottom of about section */
 
 .about__socials-button {
   height: 50px;

@@ -1,3 +1,13 @@
-//*[_type == "project"] {_id, projectName, "frontpageImage": frontpageImage.asset->.url,}
+//*[_type in ["about"]]
 
-*[_type in ["about"]]
+*[_type == 'about']
+{
+  _id,
+  contactInfo,
+  heading,
+  info,
+  software,
+  values,
+  "portrait": portrait.asset->.url,
+  "socials": socials[].asset->.url,
+}

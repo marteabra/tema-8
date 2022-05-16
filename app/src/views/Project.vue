@@ -15,16 +15,19 @@
       </section>
     </main>
   </div>
+  <Footer />
 </template>
 
 <script>
 import Headerproject from "../components/Headerproject.vue";
 import sanityMixin from "../mixins/sanityMixin.js";
 import query from "../groq/projectpage.groq?raw";
+import Footer from "../components/Footer.vue";
 
 export default {
   components: {
     Headerproject,
+    Footer,
   },
 
   mixins: [sanityMixin],
@@ -55,19 +58,15 @@ export default {
 .project__heading-image {
   height: 70vh;
   width: 100vw;
+  object-fit: cover;
 }
 
 .project__images,
 .project__info {
-  margin: 20 200 20 200;
+  margin: 20 150 20 150;
 }
 
 .project__info div {
   margin: 40px 0 40 0;
-}
-
-.project__images img {
-  height: 500px;
-  object-fit: cover;
 }
 </style>

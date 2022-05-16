@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "vite --mode development",
     "build": "vite build --mode production",
-	 "preview": "vite preview --host"
+    "preview": "vite preview --host"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.2.21",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
