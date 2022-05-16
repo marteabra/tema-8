@@ -69,4 +69,14 @@ export default {
 .project__info div {
   margin: 40px 0 40 0;
 }
+
+.project__info {
+  display: grid;
+}
+
+.project__info div:nth-child(2) {
+  background: grey;
+  text-align: right;
+  margin-left: 200px;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
   <Headerfront />
-
+  <SanityBlocks :blocks="blocks" :serializers="serializers" />
   <div class="frontpage">
     <section class="frontpage__landing">
       <section class="frontpage__landing-image">
@@ -27,7 +27,11 @@
 
     <section class="frontpage__projects" v-for="project in projects">
       <div class="project__image"><img :src="project.frontpageImage" /></div>
-      <button class="project__button">{{ project.projectName }}</button>
+      <router-link :to="project.slug.current">
+        <button class="project__button">
+          {{ project.projectName }}
+        </button>
+      </router-link>
     </section>
 
     <div v-if="loading">.......</div>
@@ -107,14 +111,16 @@ export default {
   methods: {
     async sanityFetchProjects(query, params) {
       this.projects = await sanity.fetch(query, params);
-      console.log(this.projects);
       this.loading = false;
+      console.log(this.projects);
     },
     async sanityFetchAbout(query, params) {
       this.about = await sanity.fetch(query, params);
-      console.log(this.about);
       this.loading = false;
     },
+    /*clickProject() {
+      this.$router.push({ name: "project" });
+    },*/
   },
 };
 </script>
@@ -128,6 +134,27 @@ export default {
   font-family: var(--first-font-family);
   text-align: center;
   margin-bottom: 30px;
+}
+
+.frontpage__landing-arrow {
+  transform: translateY(-20px);
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  margin-top: 30px;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0px);
+  }
 }
 
 .frontpage-logo {
@@ -158,6 +185,7 @@ export default {
   height: 50px;
   width: 300px;
   margin-left: -40px;
+  margin-top: 130px;
   background: var(--foreground);
   font-family: var(--second-font-family);
   color: white;
@@ -173,27 +201,6 @@ export default {
   margin-right: -40px;
 }
 
-.frontpage__landing-arrow {
-  transform: translateY(-20px);
-  animation-name: bounce;
-  animation-iteration-count: infinite;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
-  margin-top: 30px;
-}
-
-@keyframes bounce {
-  from {
-    transform: translateY(0px);
-  }
-  40% {
-    transform: translateY(-20px);
-  }
-  to {
-    transform: translateY(0px);
-  }
-}
-
 .about {
   width: 100vw;
   margin: 100 0 0 0;
@@ -207,12 +214,13 @@ export default {
 .about__content {
   display: grid;
   grid-template-columns: 2fr 3fr;
-  margin: 0 100 0 100;
+  margin: 0 150 0 150;
 }
 
 /* Content right side of about section */
 .about__content-right {
   margin: 0 80 0 80;
+  background: green;
 }
 
 .about__content-info {
@@ -239,6 +247,11 @@ export default {
   justify-content: center;
   width: 100vw;
   margin: 50px 0 0 0;
+}
+
+.about__content-values div {
+  background: #ff5c52;
+  display: block;
 }
 
 /* Content bottom of about section */

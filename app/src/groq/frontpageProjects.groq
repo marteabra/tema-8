@@ -3,4 +3,5 @@
   _id, 
   projectName, 
   "frontpageImage": frontpageImage.asset->.url,
+  slug
 }
