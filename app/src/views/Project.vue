@@ -5,9 +5,13 @@
     <main class="project">
       <h1 class="project__heading">{{ result.projectName }}</h1>
       <img :src="result.headingImage" class="project__heading-image" />
-      <section class="project__info">
+      <section class="project__info" >
         <div class="project__info-brief">{{ result.brief }}</div>
-        <div class="project__info-client">{{ result.client }}</div>
+        <div class="project__info-client" >
+          <span >
+            {{ text.text }}
+          </span>
+        </div>
         <div class="project__info-idea">{{ result.idea }}</div>
       </section>
       <section class="project__images" v-for="image in result.images">
@@ -67,7 +71,8 @@ export default {
 }
 
 .project__info div {
-  margin: 40px 0 40 0;
+  margin: 20 100 20 100;
+  background: grey;
 }
 
 .project__info {
@@ -77,6 +82,5 @@ export default {
 .project__info div:nth-child(2) {
   background: grey;
   text-align: right;
-  margin-left: 200px;
 }
 </style>

@@ -27,11 +27,13 @@
 
     <section class="frontpage__projects" v-for="project in projects">
       <div class="project__image"><img :src="project.frontpageImage" /></div>
-      <router-link :to="project.slug.current">
-        <button class="project__button">
-          {{ project.projectName }}
-        </button>
-      </router-link>
+      <div class="project__button-container">
+        <router-link :to="project.slug.current">
+          <button class="project__button">
+            {{ project.projectName }}
+          </button>
+        </router-link>
+      </div>
     </section>
 
     <div v-if="loading">.......</div>
@@ -51,13 +53,20 @@
           </section>
 
           <section class="about__content-right">
-            <div class="about__content-info">{{ about.info }}</div>
+            <div class="about__content-info" v-for="info in about.info">
+              <span v-for="text in info.children">
+                {{ text.text }}
+              </span>
+            </div>
             <div class="about__content-contact">
               {{ about.contactInfo }}
             </div>
             <div class="about__content-values">
-              <div v-for="text in about.values[0].children">
-                {{ text.text }}
+              <div v-for="value in about.values">
+                <span v-for="text in value.children">
+                  {{ text.text }}
+                </span>
+                
               </div>
             </div>
           </section>
@@ -74,7 +83,7 @@
       </section>
     </div>
   </div>
-  <Footer />
+  <Footer/>
 </template>
 
 <script>
@@ -112,20 +121,17 @@ export default {
     async sanityFetchProjects(query, params) {
       this.projects = await sanity.fetch(query, params);
       this.loading = false;
-      console.log(this.projects);
     },
     async sanityFetchAbout(query, params) {
       this.about = await sanity.fetch(query, params);
       this.loading = false;
     },
-    /*clickProject() {
-      this.$router.push({ name: "project" });
-    },*/
   },
 };
 </script>
 
 <style>
+/*  Landingpage */
 .frontpage__landing {
   background: #ff5c52;
   color: white;
@@ -162,6 +168,8 @@ export default {
   margin: 80 0 80 0;
 }
 
+
+/*  frontpage project section  */
 .frontpage__projects {
   display: flex;
   padding: 10px;
@@ -179,7 +187,6 @@ export default {
 }
 
 .project__button {
-  align-self: center;
   border-radius: 40px;
   box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.2);
   height: 50px;
@@ -187,7 +194,7 @@ export default {
   margin-left: -40px;
   margin-top: 130px;
   background: var(--foreground);
-  font-family: var(--second-font-family);
+  font-weight: var(--font-regular);
   color: white;
 }
 
@@ -201,6 +208,7 @@ export default {
   margin-right: -40px;
 }
 
+/* ABOUT */
 .about {
   width: 100vw;
   margin: 100 0 0 0;
@@ -220,15 +228,16 @@ export default {
 /* Content right side of about section */
 .about__content-right {
   margin: 0 80 0 80;
-  background: green;
 }
 
 .about__content-info {
-  margin-bottom: 20px;
+  font-family: var(--second-font-family);
 }
 
 .about__content-contact {
-  margin-bottom: 20px;
+  margin: 50 0 50 50;
+  width: 150px;
+
 }
 
 /* Content left side of about section */
@@ -250,7 +259,6 @@ export default {
 }
 
 .about__content-values div {
-  background: #ff5c52;
   display: block;
 }
 
@@ -260,6 +268,73 @@ export default {
   height: 50px;
   width: 50px;
   margin: 15px;
+}
+
+@media screen and (max-width: 800px) {
+  /* PROJECT SECTION */
+  .frontpage__projects {
+    display: grid;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 420px;
+  }
+
+  .project__image img {
+    width: 100vw;
+    height: 350px;
+    margin: 0;
+    object-fit: cover;
+  }
+
+  .project__button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -65;
+  }
+  
+  .project__button {
+    margin: 0;
+  }
+
+/* ABOUT SECTION */
+  .about {
+    margin: 0;
+}
+
+  .about__heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+  .about__content {
+    display: block;
+    margin: 0 ;
+  }
+
+/* Upper content ABOUT section */
+  .content__left-portrait {
+    width: 200px;
+    margin: 20px auto;
+  }
+    
+  .content__left-software {
+    padding-left: 140px;
+    margin-top: 0px auto;
+  }
+
+  /* Content middle about section */
+  .about__content-right {
+    margin: 20;
+  }
+
+  /* Content bottom of about section */
+  .about__socials-button {
+    height: 40px;
+    width: 40px;
+  }
+  
 }
 </style>
 

@@ -26,7 +26,7 @@ export default {
         {
             title: 'Information',
             name: 'info',
-            type: 'text'
+            type: 'blockContent'
         },
         {
             title: 'Contact information',
