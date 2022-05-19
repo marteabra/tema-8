@@ -64,4 +64,25 @@ a:hover {
 .header__list ul {
   margin-right: 40px;
 }
+
+@media screen and (max-width: 800px) {
+  .header{
+    height: 8vh;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .header a {
+    font-size: 0.7rem;
+  }
+  .header__logo {
+    height: 15px;
+    align-self: center;
+    margin-top: 20px;
+  }
+  
+  .header__list ul {
+    display: none;
+}
+}
 </style>

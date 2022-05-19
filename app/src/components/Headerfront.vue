@@ -47,7 +47,6 @@ a {
 a:hover {
   color: rgba(255, 255, 255, 0.643);
 }
-
 .header__logo {
   height: 25px;
   margin: 10 0 10 0;
@@ -63,5 +62,26 @@ a:hover {
 
 .header__list ul {
   margin-right: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  .header{
+    height: 8vh;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .header a {
+    font-size: 0.7rem;
+  }
+  .header__logo {
+    height: 15px;
+    align-self: center;
+    margin-top: 20px;
+  }
+  
+  .header__list ul {
+    display: none;
+}
 }
 </style>

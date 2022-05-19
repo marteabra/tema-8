@@ -1,18 +1,16 @@
 <template>
-  <Headerproject />
+  <div class="fixedheader">
+    <Headerproject class="header"/>
+  </div>
   <div v-if="loading">.......</div>
   <div v-else>
     <main class="project">
       <h1 class="project__heading">{{ result.projectName }}</h1>
       <img :src="result.headingImage" class="project__heading-image" />
-      <section class="project__info" >
-        <div class="project__info-brief">{{ result.brief }}</div>
-        <div class="project__info-client" >
-          <span >
-            {{ text.text }}
-          </span>
-        </div>
-        <div class="project__info-idea">{{ result.idea }}</div>
+      <section class="project__info" v-for="client in project.client">
+        <span class="project__info-brief">{{ result.brief }}</span>
+        <span class="project__info-client" v-for="text in info.children">{{ result.client }}</span>
+        <span class="project__info-idea">{{ result.idea }}</span>
       </section>
       <section class="project__images" v-for="image in result.images">
         <img :src="image" alt="productImage" />
@@ -27,11 +25,13 @@ import Headerproject from "../components/Headerproject.vue";
 import sanityMixin from "../mixins/sanityMixin.js";
 import query from "../groq/projectpage.groq?raw";
 import Footer from "../components/Footer.vue";
+import { SanityBlocks } from "sanity-blocks-vue-component";
 
 export default {
   components: {
     Headerproject,
     Footer,
+    SanityBlocks
   },
 
   mixins: [sanityMixin],
@@ -44,13 +44,17 @@ export default {
     const params = {
       projectSlug: this.$route.params.projectSlug,
     };
-
     await this.sanityFetch(query, params);
   },
 };
 </script>
 
 <style>
+.header {
+  position: fixed;
+  top: 0;
+}
+
 .project__heading {
   text-align: center;
   margin-top: 60px;
@@ -70,17 +74,38 @@ export default {
   margin: 20 150 20 150;
 }
 
-.project__info div {
+.project__info span {
   margin: 20 100 20 100;
-  background: grey;
 }
 
 .project__info {
   display: grid;
 }
 
-.project__info div:nth-child(2) {
-  background: grey;
+.project__info span:nth-child(2) {
   text-align: right;
+}
+
+@media screen and (max-width: 800px) {
+  
+.project__heading {
+  width: 55vw;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.project__heading-image {
+  height: 30vh;
+}
+
+.project__images, .project__info{
+  margin: 10 0 0 0;
+}
+
+.project__info span {
+  margin: 10;
+}
 }
 </style>

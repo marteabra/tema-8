@@ -1,5 +1,7 @@
 <template>
+<div class="fixedheader">
   <Headerfront />
+</div>
   <SanityBlocks :blocks="blocks" :serializers="serializers" />
   <div class="frontpage">
     <section class="frontpage__landing">
@@ -42,14 +44,16 @@
         <h1 class="about__heading">{{ about.heading }}</h1>
         <main class="about__content">
           <section class="about__content-left">
-            <div class="content__left-portrait">
-              <img :src="about.portrait" />
+              <div class="portrait-container">
+              <img class="content__left-portrait" :src="about.portrait" />
             </div>
-            <ul class="content__left-software" v-for="tech in about.software">
-              <li>
-                {{ tech }}
-              </li>
-            </ul>
+            <div class="software-container">
+              <ul class="content__left-software" v-for="tech in about.software">
+                <li>
+                  {{ tech }}
+                </li>
+              </ul>
+            </div>
           </section>
 
           <section class="about__content-right">
@@ -131,6 +135,11 @@ export default {
 </script>
 
 <style>
+.fixedheader{
+  position: sticky;
+  top: 0;
+}
+
 /*  Landingpage */
 .frontpage__landing {
   background: #ff5c52;
@@ -271,6 +280,20 @@ export default {
 }
 
 @media screen and (max-width: 800px) {
+  /* LANDING SECTION */
+  .frontpage__landing {
+    height: 90vh;
+  }
+
+  .frontpage-logo {
+    height: 30vh;
+    margin-top: 120;
+  }
+
+  .frontpage__landing-arrow{
+    margin-top: 50px;
+  }
+
   /* PROJECT SECTION */
   .frontpage__projects {
     display: grid;
@@ -314,19 +337,31 @@ export default {
   }
 
 /* Upper content ABOUT section */
+  .portrait-container {
+    display: flex;
+    justify-content: flex-end;
+  }
   .content__left-portrait {
-    width: 200px;
-    margin: 20px auto;
+    width: 170px;
+    margin-top: 0;
+    margin-right: 20px;
   }
     
+  .software-container {
+    position: absolute;
+    margin-top: -160px;
+
+  }
+
   .content__left-software {
-    padding-left: 140px;
-    margin-top: 0px auto;
+    padding-left: 40px;
+    margin-top: 0px;
+    
   }
 
   /* Content middle about section */
   .about__content-right {
-    margin: 20;
+    margin: 150 20 20 20;
   }
 
   /* Content bottom of about section */

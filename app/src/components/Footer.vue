@@ -62,7 +62,7 @@ export default {
 
 @media screen and (max-width: 800px) {
   .footer {
-  margin: 30 0 30 0;
+  margin: 100 0 30 0;
 }
 
 .footer__info {

@@ -1,1 +1,2 @@
+//  Old frontpage groq about. Fetching all in about -> see frontpageAbout.groq
 *[_type == "about"]{...}
