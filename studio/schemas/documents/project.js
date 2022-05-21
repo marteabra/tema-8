@@ -35,12 +35,12 @@ export default {
         {
             title: 'Client',
             name: 'client',
-            type: 'blockContent'
+            type: 'text'
         },
         {
             title: 'Idea',
             name: 'idea',
-            type: 'blockContent'
+            type: 'text'
         },
         {
             title: 'Images',

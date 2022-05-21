@@ -76,7 +76,7 @@ a:hover {
     font-size: 0.7rem;
   }
   .header__logo {
-    height: 15px;
+    height: 20px;
     align-self: center;
     margin-top: 20px;
   }

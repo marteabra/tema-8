@@ -16,8 +16,8 @@
         <a href="https://www.linkedin.com/in/marte-abrahamsen-22a501175/">
           <img src="public/images/linkedin-icon-red.png" alt="linkedin icon button" />
         </a>
-        <a href="#">
-          <img src="public/images/ig-icon-red.png" alt="" />
+        <a href="mailto: marte.abrahams1@hotmail.com">
+          <img src="public/images/email-icon-red.png" alt="email icon button" />
         </a>
       </section>
     </section>
@@ -46,7 +46,7 @@ export default {
 
 .footer__info {
   font-family: var(--second-font-family);
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .footer__social-links {

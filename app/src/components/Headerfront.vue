@@ -8,12 +8,12 @@
       />
     </a>
     <li class="header__list">
-      <a href="">
+      <a href="#frontpage__project-section">
         <ul>
           PROJECTS
         </ul>
       </a>
-      <a href="">
+      <a href="#frontpage__about-section">
         <ul>
           ABOUT
         </ul>
@@ -35,6 +35,7 @@ export default {
   position: relative;
   height: 10vh;
   padding: 5 0 0 0;
+  align-items: center;
 }
 
 a {
@@ -49,7 +50,7 @@ a:hover {
 }
 .header__logo {
   height: 25px;
-  margin: 10 0 10 0;
+  margin: 0 0 0 10;
 }
 
 .header__list {
@@ -69,15 +70,17 @@ a:hover {
     height: 8vh;
     padding: 0;
     justify-content: center;
+    margin: 0;
+    align-items: center;
   }
 
   .header a {
     font-size: 0.7rem;
   }
   .header__logo {
-    height: 15px;
+    height: 20px;
     align-self: center;
-    margin-top: 20px;
+    margin: 0;
   }
   
   .header__list ul {

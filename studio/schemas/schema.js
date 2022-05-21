@@ -4,6 +4,7 @@ import blockContent from './blockContent.js';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 import project from './documents/project';
 import about from './documents/about';
+import linkAssets from './documents/linkAssets';
 
 export default createSchema({
 
@@ -11,6 +12,7 @@ export default createSchema({
   types: schemaTypes.concat([
     project,
     about,
-    blockContent
+    blockContent,
+    linkAssets
   ]),
 })

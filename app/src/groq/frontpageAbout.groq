@@ -9,5 +9,8 @@
   software,
   values,
   "portrait": portrait.asset->.url,
-  "socials": socials[].asset->.url,
+  socials[] {
+    url,
+    "icon": linkType->.linkIcons.asset->.url
+  }
 }

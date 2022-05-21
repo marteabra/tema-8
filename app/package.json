@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sanity/image-url": "^1.0.1",
     "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.2.21",
     "vue-router": "^4.0.12",

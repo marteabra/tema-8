@@ -7,9 +7,9 @@
     <main class="project">
       <h1 class="project__heading">{{ result.projectName }}</h1>
       <img :src="result.headingImage" class="project__heading-image" />
-      <section class="project__info" v-for="client in project.client">
+      <section class="project__info">
         <span class="project__info-brief">{{ result.brief }}</span>
-        <span class="project__info-client" v-for="text in info.children">{{ result.client }}</span>
+        <span class="project__info-client">{{ result.client }}</span>
         <span class="project__info-idea">{{ result.idea }}</span>
       </section>
       <section class="project__images" v-for="image in result.images">
@@ -80,6 +80,7 @@ export default {
 
 .project__info {
   display: grid;
+  white-space: pre-line;
 }
 
 .project__info span:nth-child(2) {
@@ -87,6 +88,17 @@ export default {
 }
 
 @media screen and (max-width: 800px) {
+  .project__info {
+    margin: 0;
+  }
+
+  .project__images {
+    width: 100vw;
+    margin: 10 0 0 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
   
 .project__heading {
   width: 55vw;
@@ -100,12 +112,20 @@ export default {
   height: 30vh;
 }
 
-.project__images, .project__info{
+.project__images{
   margin: 10 0 0 0;
 }
 
+ .project__info {
+   margin: 20px;
+   font-size: 0.8rem;
+ }
+
 .project__info span {
   margin: 10;
+}
+.project__info span:nth-child(2) {
+  text-align: left;
 }
 }
 </style>

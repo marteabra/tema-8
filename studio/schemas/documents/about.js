@@ -43,7 +43,23 @@ export default {
             name: 'socials',
             type: 'array',
             of: [{
-                type: 'image'
+                title: 'Link',
+                name: 'link',
+                type: 'object',
+                fields: [
+                    {
+                        title: 'Link type',
+                        name: 'linkType',
+                        type: 'reference',
+                        to: [{ type: 'linkAssets' }]
+                    },
+                    {
+                        title: 'URL',
+                        name: 'url',
+                        type: 'string',
+                        scheme: ['http', 'https', 'mailto', 'tel']
+                    }
+                ]
             }]
         }
     ]

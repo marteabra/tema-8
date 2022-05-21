@@ -27,7 +27,7 @@
       </svg>
     </section>
 
-    <section class="frontpage__projects" v-for="project in projects">
+    <section id="frontpage__project-section" class="frontpage__projects" v-for="project in projects">
       <div class="project__image"><img :src="project.frontpageImage" /></div>
       <div class="project__button-container">
         <router-link :to="project.slug.current">
@@ -40,7 +40,7 @@
 
     <div v-if="loading">.......</div>
     <div v-else>
-      <section class="about" v-for="about in about">
+      <section id="frontpage__about-section" class="about" v-for="about in about">
         <h1 class="about__heading">{{ about.heading }}</h1>
         <main class="about__content">
           <section class="about__content-left">
@@ -77,12 +77,12 @@
         </main>
 
         <section class="about__socials">
-          <button
+          <a :href="link.url"
             class="about__socials-button"
-            v-for="socials in about.socials"
+            v-for="link in about.socials"
           >
-            <img :src="socials" />
-          </button>
+            <img :src="link.icon"/>
+          </a>
         </section>
       </section>
     </div>
@@ -100,6 +100,7 @@ import sanity from "../sanity.js";
 import { SanityBlocks } from "sanity-blocks-vue-component";
 
 export default {
+
   mixins: [sanityMixin],
 
   async created() {
@@ -138,6 +139,7 @@ export default {
 .fixedheader{
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 
 /*  Landingpage */
@@ -200,7 +202,7 @@ export default {
   box-shadow: 2px 5px 8px rgba(0, 0, 0, 0.2);
   height: 50px;
   width: 300px;
-  margin-left: -40px;
+  margin-left: -100px;
   margin-top: 130px;
   background: var(--foreground);
   font-weight: var(--font-regular);
@@ -214,8 +216,22 @@ export default {
 }
 
 .frontpage__projects:nth-child(2n + 3) .project__button {
-  margin-right: -40px;
+  margin-right: -100px;
 }
+
+@media screen and (max-width: 1000px) {
+  .project__button {
+    position: absolute;
+    right:0;
+  }
+
+  .frontpage__projects:nth-child(2n + 3) .project__button {
+    left: 0;
+    margin-left: 10px; 
+  }
+    
+}
+  
 
 /* ABOUT */
 .about {
@@ -232,11 +248,12 @@ export default {
   display: grid;
   grid-template-columns: 2fr 3fr;
   margin: 0 150 0 150;
+  white-space: pre-line;
 }
 
 /* Content right side of about section */
 .about__content-right {
-  margin: 0 80 0 80;
+  margin: 0 70 0 70;
 }
 
 .about__content-info {
@@ -244,9 +261,9 @@ export default {
 }
 
 .about__content-contact {
-  margin: 50 0 50 50;
-  width: 150px;
-
+  margin: 50;
+  text-align: center;
+  white-space: pre-line;
 }
 
 /* Content left side of about section */
@@ -263,7 +280,7 @@ export default {
 .about__socials {
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   margin: 50px 0 0 0;
 }
 
@@ -281,17 +298,17 @@ export default {
 
 @media screen and (max-width: 800px) {
   /* LANDING SECTION */
-  .frontpage__landing {
-    height: 90vh;
+  .frontpage{
+    margin: 0;
   }
 
   .frontpage-logo {
-    height: 30vh;
-    margin-top: 120;
+    height: 50vh;
+    margin-top: 100;
   }
 
   .frontpage__landing-arrow{
-    margin-top: 50px;
+    margin-top: -30px;
   }
 
   /* PROJECT SECTION */
@@ -316,14 +333,19 @@ export default {
     justify-content: center;
     margin-top: -65;
   }
+
+  .frontpage__projects:nth-child(2n + 3) .project__button {
+    margin-right: 0px;
+  }
   
   .project__button {
     margin: 0;
+    position: unset;
   }
 
 /* ABOUT SECTION */
   .about {
-    margin: 0;
+    padding: 0 120 0 120;
 }
 
   .about__heading {
@@ -348,7 +370,6 @@ export default {
   }
     
   .software-container {
-    position: absolute;
     margin-top: -160px;
 
   }
@@ -356,12 +377,11 @@ export default {
   .content__left-software {
     padding-left: 40px;
     margin-top: 0px;
-    
   }
 
   /* Content middle about section */
   .about__content-right {
-    margin: 150 20 20 20;
+    margin: 50 20 20 20;
   }
 
   /* Content bottom of about section */
@@ -370,6 +390,70 @@ export default {
     width: 40px;
   }
   
+}
+
+
+/*  MOBILE  */
+@media screen and (max-width: 500px) {
+  /* LANDING SECTION */
+  .frontpage__landing {
+    height: 90vh;
+  }
+
+  .frontpage-logo {
+    height: 30vh;
+    margin-top: 120;
+  }
+
+  /* PROJECT SECTION */
+  .project__image img {
+    height: 300px;
+  }
+
+  .project__button-container {
+    margin-top: -85px;
+  }
+
+  .project__button {
+    left: 0;
+    right: 0;
+    
+  }
+
+
+/* ABOUT SECTION */
+  .about {
+    padding: 0 10 0 10;
+    margin: 0;
+}
+
+  .about__heading {
+    margin: 0 0 30 0;
+}
+
+.about__content {
+  font-size: 0.8rem;
+}
+
+/* Upper content ABOUT section */
+  .content__left-portrait {
+    width: 140px;
+  }
+
+  .content__left-software {
+    margin: 0;
+    padding-right: 10;
+  }
+
+  /* Content middle about section */
+  .about__content-right {
+    margin: 50 20 20 20;
+  }
+
+  .about__socials-button img {
+    height: 35px;
+    width: 35px;
+  }
 }
 </style>
 
