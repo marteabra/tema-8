@@ -7,7 +7,7 @@
     <section class="frontpage__landing">
       <section class="frontpage__landing-image">
         <img
-          src="public/images/logo-portfolio-inverted.svg"
+          src="/public/images/logo-portfolio-inverted.svg"
           alt=""
           class="frontpage-logo"
         />

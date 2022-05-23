@@ -11,13 +11,13 @@
       </section>
       <section class="footer__social-links">
         <a href="https://github.com/marteabra">
-          <img  src="public/images/github-icon-red.png" alt="github icon button" />
+          <img  src="/public/images/github-icon-red.png" alt="github icon button" />
         </a>
         <a href="https://www.linkedin.com/in/marte-abrahamsen-22a501175/">
-          <img src="public/images/linkedin-icon-red.png" alt="linkedin icon button" />
+          <img src="/public/images/linkedin-icon-red.png" alt="linkedin icon button" />
         </a>
         <a href="mailto: marte.abrahams1@hotmail.com">
-          <img src="public/images/email-icon-red.png" alt="email icon button" />
+          <img src="/public/images/email-icon-red.png" alt="email icon button" />
         </a>
       </section>
     </section>
