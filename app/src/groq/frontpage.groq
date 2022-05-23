@@ -1,4 +1,4 @@
-//old frontpage groq, fetching about and project in same groq -> see frontpageProject.groq
+//old frontpage groq, attempt to fetch about and project in same groq -> see frontpageProject.groq
 
 *[_type in ["about", "project"]]
 {

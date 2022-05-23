@@ -1,8 +1,7 @@
 body {
 	background: var(--background);
 	color: var(--font-color-grey);
-	font-size: var(--font-size);
+	font-size: var(--font-size-information);
 	font-family: var(--second-font-family);
 	font-weight: var(--font-light);
-
 }

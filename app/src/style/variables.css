@@ -6,9 +6,11 @@
 	--second-font-family: 'roboto', sans-serif;
 	--font-size-attention: 20px;
 	--font-size-information: 18px;
+	--font-size-mobile: 0.8rem;
 
 	--font-color-red: #FF5C52;
 	--font-color-grey: #333333;
+	--font-color-white: white;
 	--font-light: 300;
 	--font-regular: 400;
 

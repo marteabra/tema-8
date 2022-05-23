@@ -5,7 +5,7 @@
   <div v-if="loading">.......</div>
   <div v-else>
     <main class="project">
-      <h1 class="project__heading">{{ result.projectName }}</h1>
+      <h1 class="project__heading">{{ result.projectName }}</h1>          <!-- Implementing results from project API to template, fetched from projectPage.groq -->
       <img :src="result.headingImage" class="project__heading-image" />
       <section class="project__info">
         <span class="project__info-brief">{{ result.brief }}</span>
@@ -25,13 +25,11 @@ import Headerproject from "../components/Headerproject.vue";
 import sanityMixin from "../mixins/sanityMixin.js";
 import query from "../groq/projectpage.groq?raw";
 import Footer from "../components/Footer.vue";
-import { SanityBlocks } from "sanity-blocks-vue-component";
 
 export default {
   components: {
     Headerproject,
-    Footer,
-    SanityBlocks
+    Footer
   },
 
   mixins: [sanityMixin],
@@ -42,7 +40,7 @@ export default {
 
   async created() {
     const params = {
-      projectSlug: this.$route.params.projectSlug,
+      projectSlug: this.$route.params.projectSlug,        // Creating slug for each project based on their projectName
     };
     await this.sanityFetch(query, params);
   },
@@ -80,16 +78,30 @@ export default {
 
 .project__info {
   display: grid;
-  white-space: pre-line;
+  white-space: pre-line;            /* Replacing sanity blockComponent, using white-space instead of more complicated plugins */
 }
 
 .project__info span:nth-child(2) {
   text-align: right;
 }
 
-@media screen and (max-width: 800px) {
+
+/* For smaller computers */
+@media screen and (max-width: 1300px) {
+  .project__images,
   .project__info {
-    margin: 0;
+    margin: 20 50 20 50;
+}
+
+  .project__info span {
+    margin: 10;
+}
+}
+
+/* For Tablet */
+@media screen and (max-width: 800px) {  
+  .project__info {
+    margin: 30;
   }
 
   .project__images {
@@ -98,8 +110,8 @@ export default {
   }
 }
 
+/* For mobile */
 @media screen and (max-width: 500px) {
-  
 .project__heading {
   width: 55vw;
   font-size: 1.5rem;
