@@ -100,7 +100,7 @@ import Footer from "../components/Footer.vue";
 import sanityMixin from "../mixins/sanityMixin.js";
 import queryProjects from "../groq/frontpageProjects.groq?raw";
 import queryAbout from "../groq/frontpageAbout.groq?raw";
-import sanity from "./sanity.js";
+import sanity from "../sanity.js";
 import { SanityBlocks } from "sanity-blocks-vue-component";
 
 export default {
