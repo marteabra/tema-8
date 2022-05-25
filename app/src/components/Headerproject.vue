@@ -8,12 +8,12 @@
       />
     </a>
     <li class="header__list">
-      <a href="#frontpage__project-section">
+      <a href="/#frontpage__project-section">
         <ul>
           PROJECTS
         </ul>
       </a>
-      <a href="#frontpage__about-section">
+      <a href="/#frontpage__about-section">
         <ul>
           ABOUT
         </ul>
@@ -46,7 +46,7 @@ a {
 }
 
 a:hover {
-  color: rgba(255, 255, 255, 0.643);
+  color: #c05651;
 }
 .header__logo {
   height: 25px;

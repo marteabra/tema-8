@@ -72,8 +72,13 @@ export default {
   margin: 20 150 20 150;
 }
 
+.project__info{
+  display: flex;
+  justify-content: center;
+}
+
 .project__info span {
-  margin: 20 100 20 100;
+  width: 60ch;
 }
 
 .project__info {
@@ -91,17 +96,17 @@ export default {
   .project__images,
   .project__info {
     margin: 20 50 20 50;
-}
+  }
 
   .project__info span {
     margin: 10;
-}
+  }
 }
 
 /* For Tablet */
 @media screen and (max-width: 800px) {  
   .project__info {
-    margin: 30;
+    width: auto;
   }
 
   .project__images {
@@ -112,32 +117,33 @@ export default {
 
 /* For mobile */
 @media screen and (max-width: 500px) {
-.project__heading {
-  width: 55vw;
-  font-size: 1.5rem;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
+  .project__heading {
+    width: 55vw;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
-.project__heading-image {
-  height: 30vh;
-}
+  .project__heading-image {
+    height: 30vh;
+  }
 
-.project__images{
-  margin: 10 0 0 0;
-}
+  .project__images{
+    margin: 10 0 0 0;
+  }
 
- .project__info {
-   margin: 20px;
-   font-size: 0.8rem;
- }
+  .project__info {
+    font-size: 0.8rem;
+  }
 
-.project__info span {
-  margin: 10;
-}
-.project__info span:nth-child(2) {
-  text-align: left;
-}
+  .project__info span {
+    margin: 10;
+    width: 40ch;
+  }
+
+  .project__info span:nth-child(2) {
+    text-align: left;
+  }
 }
 </style>

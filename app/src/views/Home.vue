@@ -198,6 +198,7 @@ export default {
   padding: 10px;
   height: 480px;
   margin: 0 50 0 50;
+  padding-top: 70px;
 }
 
 .frontpage__projects:nth-child(2n + 3) {
@@ -234,7 +235,8 @@ export default {
 /* ABOUT */
 .about {
   width: 100vw;
-  margin: 100 0 0 0;
+  margin: 50 0 0 0;
+  padding-top: 60px;
 }
 
 .about__heading {
