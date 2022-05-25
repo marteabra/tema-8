@@ -2,7 +2,7 @@
   <main class="header">
     <a href="/">
       <img
-        src="./public/images/logo-only-name.svg"
+        src="../public/images/logo-only-name.svg"
         alt="logo-inverted"
         class="header__logo"
       />
