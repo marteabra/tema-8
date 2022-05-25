@@ -1,8 +1,8 @@
 <template>
   <main class="header">
-    <a href="/">
+    <a href="/images/logo-only-name-invert.svg">
       <img
-        src="images/logo-only-name-invert.svg"
+        src=""
         alt="logo-inverted"
         class="header__logo"
       />
