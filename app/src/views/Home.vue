@@ -294,7 +294,7 @@ export default {
   margin: 15px;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1100px) {
   .project__button {
     position: absolute;
     right:0;
