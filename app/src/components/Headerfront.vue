@@ -1,6 +1,6 @@
 <template>
   <main class="header">
-    <a href="/images/logo-only-name-invert.svg">
+    <a href="/images/Logo-only-name-invert.svg">
       <img
         src=""
         alt="logo-inverted"
