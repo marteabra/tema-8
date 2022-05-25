@@ -297,11 +297,11 @@ export default {
 @media screen and (max-width: 1100px) {
   .project__button {
     position: absolute;
-    right:0;
+    right: 20px;
   }
 
   .frontpage__projects:nth-child(2n + 3) .project__button {
-    left: 0;
+    left: 20;
     margin-left: 10px; 
   }
 
