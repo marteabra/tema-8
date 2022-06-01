@@ -2,10 +2,14 @@
   <div class="fixedheader">
     <Headerproject class="header"/>
   </div>
+
   <div v-if="loading">.......</div>
+
   <div v-else>
     <main class="project">
-      <h1 class="project__heading">{{ result.projectName }}</h1>          <!-- Implementing results from project API to template, fetched from projectPage.groq -->
+      <h1 class="project__heading">
+        {{ result.projectName }}
+      </h1>          <!-- Implementing results from project API to template, fetched from projectPage.groq -->
       <img :src="result.headingImage" class="project__heading-image" />
       <section class="project__info">
         <span class="project__info-brief">{{ result.brief }}</span>
