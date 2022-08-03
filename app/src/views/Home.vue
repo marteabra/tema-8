@@ -225,7 +225,7 @@ export default {
   height: 50px;
   width: 300px;
   margin-left: -100px;
-  margin-top: 130px;
+  margin-top: 200px;
   background: var(--foreground);
   font-weight: var(--font-regular);
   color: white;
