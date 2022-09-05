@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "@sanity/base": "^2.29.8",
+    "@sanity/cli": "^2.31.1",
     "@sanity/core": "^2.29.5",
     "@sanity/default-layout": "^2.29.8",
     "@sanity/default-login": "^2.29.8",
@@ -23,9 +24,12 @@
     "@sanity/image-url": "^1.0.1",
     "@sanity/vision": "^2.29.8",
     "eslint": "^8.6.0",
+    "install": "^0.13.0",
+    "npm": "^8.18.0",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",
+    "sanity": "^2.29.3",
     "styled-components": "^5.2.0"
   },
   "repository": {
